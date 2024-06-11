@@ -1,80 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Webpage</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2 {
-            color: #ffffff;
-        }
-        a {
-            color: #1e90ff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .section {
-            margin-bottom: 40px;
-        }
-        .contact-info a {
-            display: block;
-            margin-bottom: 10px;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #1f1f1f;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name - Personal Website</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 1em;
+  color: #333;
+}
+
+.nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.nav a:hover {
+  background-color: #dddddd;
+  color: #333;
+}
+
+.main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+img {
+  width: 200px;
+  border-radius: 50%;
+  margin: 10px auto;
+  display: block;
+}
+
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Nadun Maduwantha</h1>
-            <p>Welcome to my personal webpage!</p>
-        </header>
-        <section id="about" class="section">
-            <h2>About Me</h2>
-            <p>Write a brief introduction about yourself here. Share your background, interests, and any other information you'd like visitors to know.</p>
-        </section>
-        <section id="resume" class="section">
-            <h2>Resume</h2>
-            <p>Provide a summary of your professional experience, education, and skills. You can also link to a downloadable version of your resume.</p>
-        </section>
-        <section id="projects" class="section">
-            <h2>Projects</h2>
-            <p>Showcase your projects here. Include descriptions, technologies used, and links to live demos or source code if available.</p>
-        </section>
-        <section id="blog" class="section">
-            <h2>Blog</h2>
-            <p>Share your thoughts and insights on various topics. Include links to your blog posts or write your content directly here.</p>
-        </section>
-        <section id="contact" class="section">
-            <h2>Contact Information</h2>
-            <div class="contact-info">
-                <a href="mailto:your.email@example.com">Email: your.email@example.com</a>
-                <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-                <a href="https://twitter.com/yourusername" target="_blank">Twitter</a>
-            </div>
-        </section>
-    </div>
-    <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
-    </footer>
+  <header class="header">
+    <h1>Your Name</h1>
+    <p>Your Job Title or Description</p>
+  </header>
+
+  <nav class="nav">
+    <a href="#about">About Me</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main class="main">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Write a short introduction about yourself, your interests, and goals.</p>
+      <img src="images/you.jpg" alt="Your Photo">
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>Skill 1</li>
+        <li>Skill 2</li>
+        <li>Skill 3</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <p>Showcase some of your projects with brief descriptions and links (if applicable).</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Provide your contact information (email, social media links etc.).</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 Your Name</p>
+  </footer>
 </body>
 </html>
