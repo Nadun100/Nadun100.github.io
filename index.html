@@ -1,122 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name - Personal Website</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-      body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Ledger & Code</title>
+<meta name="description" content="Portfolio of [Your Name] — self-taught in IT, grounded in commerce.">
 
-.header {
-  background-color: #f1f1f1;
-  padding: 20px;
-  text-align: center;
-}
+<!-- ============================================================
+     EDIT ME: search for "EDIT:" throughout this file to find
+     every spot you should replace with your real info.
+     ============================================================ -->
 
-h1 {
-  font-size: 2em;
-  margin-bottom: 5px;
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-p {
-  font-size: 1em;
-  color: #333;
-}
+<style>
+  :root{
+    --bg:#0B1220;
+    --panel:#121A2E;
+    --panel-alt:#17203A;
+    --line:#2A3350;
+    --gold:#C9A24B;
+    --teal:#4FD1C5;
+    --text:#E8EAF0;
+    --muted:#8B93A7;
+    --radius:2px;
+  }
 
-.nav {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  display: flex;
-  justify-content: space-around;
-}
+  *{box-sizing:border-box; margin:0; padding:0;}
 
-.nav a {
-  color: #fff;
-  text-decoration: none;
-  padding: 10px;
-}
+  html{scroll-behavior:smooth;}
 
-.nav a:hover {
-  background-color: #dddddd;
-  color: #333;
-}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
 
-.main {
-  padding: 20px;
-}
+  ::selection{ background:var(--gold); color:var(--bg); }
 
-section {
-  margin-bottom: 20px;
-}
+  a{ color:inherit; text-decoration:none; }
 
-h2 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
+  .mono{ font-family:'JetBrains Mono', monospace; }
 
-img {
-  width: 200px;
-  border-radius: 50%;
-  margin: 10px auto;
-  display: block;
-}
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
 
-.footer {
-  background-color: #f1f1f1;
-  padding: 10px;
-  text-align: center;
-}
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:500; letter-spacing:-0.01em; }
 
-  </style>
+  /* ---------- Nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(11,18,32,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:72px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .brand .dot{ color:var(--gold); }
+  .navlinks{ display:flex; gap:36px; font-size:0.85rem; }
+  .navlinks a{
+    color:var(--muted);
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.02em;
+    transition:color .2s;
+    position:relative;
+  }
+  .navlinks a:hover{ color:var(--text); }
+  .navlinks a::after{
+    content:''; position:absolute; left:0; bottom:-6px;
+    width:0; height:1px; background:var(--teal);
+    transition:width .25s;
+  }
+  .navlinks a:hover::after{ width:100%; }
+  .navtoggle{ display:none; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex; align-items:center;
+    padding-top:72px;
+    position:relative;
+  }
+  .hero::before{
+    /* faint ledger ruling in the background */
+    content:'';
+    position:absolute; inset:0;
+    background-image:repeating-linear-gradient(
+      to bottom, transparent, transparent 47px, var(--line) 48px
+    );
+    opacity:0.25;
+    mask-image:linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:64px;
+    align-items:center;
+    position:relative;
+    width:100%;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:''; width:26px; height:1px; background:var(--gold);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 4.1rem);
+    line-height:1.06;
+    margin-bottom:24px;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--teal);
+  }
+  .hero p.lede{
+    color:var(--muted);
+    font-size:1.05rem;
+    max-width:46ch;
+    margin-bottom:34px;
+  }
+  .cta-row{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.85rem;
+    padding:13px 24px;
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    transition:all .2s;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary{ background:var(--teal); color:#08151a; border-color:var(--teal); font-weight:500;}
+  .btn-primary:hover{ background:#6fe3d6; }
+  .btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
+
+  /* terminal card */
+  .terminal{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .terminal-bar{
+    display:flex; gap:7px;
+    padding:12px 16px;
+    background:var(--panel-alt);
+    border-bottom:1px solid var(--line);
+  }
+  .terminal-bar span{ width:10px; height:10px; border-radius:50%; background:var(--line); }
+  .terminal-body{
+    padding:22px 20px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.85rem;
+    color:var(--muted);
+    min-height:220px;
+  }
+  .terminal-body .line{ margin-bottom:10px; }
+  .terminal-body .prompt{ color:var(--teal); }
+  .terminal-body .out{ color:var(--text); }
+  .cursor{
+    display:inline-block; width:7px; height:1em; background:var(--teal);
+    vertical-align:text-bottom; animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:120px 0; position:relative; }
+  .section-head{ margin-bottom:56px; }
+  .section-num{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--gold);
+    font-size:0.8rem;
+    letter-spacing:0.1em;
+    display:block;
+    margin-bottom:10px;
+  }
+  .section-head h2{ font-size:clamp(1.8rem, 3vw, 2.6rem); }
+
+  /* ---------- About: dual ledger ---------- */
+  .ledger{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .ledger-col{
+    padding:40px;
+    background:var(--panel);
+  }
+  .ledger-col + .ledger-col{ border-left:1px solid var(--line); }
+  .ledger-col h3{
+    font-size:1.3rem;
+    margin-bottom:6px;
+  }
+  .ledger-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:20px;
+    display:block;
+  }
+  .ledger-col p{ color:var(--muted); margin-bottom:20px; font-size:0.95rem;}
+  .entry-list{ list-style:none; }
+  .entry-list li{
+    display:flex; justify-content:space-between; gap:16px;
+    padding:10px 0;
+    border-top:1px dashed var(--line);
+    font-size:0.88rem;
+  }
+  .entry-list li:first-child{ border-top:none; }
+  .entry-list .k{ color:var(--text); }
+  .entry-list .v{ color:var(--muted); font-family:'JetBrains Mono', monospace; font-size:0.8rem; text-align:right;}
+
+  /* ---------- Projects ---------- */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:28px;
+  }
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:32px;
+    position:relative;
+    transition:transform .25s, border-color .25s;
+  }
+  .card:hover{ transform:translateY(-4px); border-color:var(--teal); }
+  .stamp{
+    position:absolute; top:24px; right:24px;
+    width:58px; height:58px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    transform:rotate(-12deg);
+    color:var(--gold);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.55rem;
+    text-align:center;
+    letter-spacing:0.05em;
+    line-height:1.15;
+    opacity:0.85;
+  }
+  .card h3{ font-size:1.2rem; margin:0 60px 10px 0; }
+  .card p{ color:var(--muted); font-size:0.9rem; margin-bottom:20px; }
+  .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    color:var(--teal);
+    border:1px solid var(--line);
+    padding:4px 10px;
+    border-radius:20px;
+  }
+  .card .links{ display:flex; gap:18px; font-family:'JetBrains Mono', monospace; font-size:0.78rem; }
+  .card .links a{ color:var(--text); border-bottom:1px solid var(--line); padding-bottom:2px; }
+  .card .links a:hover{ color:var(--teal); border-color:var(--teal); }
+
+  /* ---------- Notes / Blog ---------- */
+  .notes-list{ border-top:1px solid var(--line); }
+  .note{
+    display:grid;
+    grid-template-columns:120px 1fr auto;
+    gap:24px;
+    align-items:baseline;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+    transition:padding-left .2s;
+  }
+  .note:hover{ padding-left:10px; }
+  .note .date{ font-family:'JetBrains Mono', monospace; color:var(--muted); font-size:0.8rem; }
+  .note h4{ font-family:'Fraunces', serif; font-weight:500; font-size:1.1rem; }
+  .note .arrow{ color:var(--gold); font-family:'JetBrains Mono', monospace; }
+
+  /* ---------- Contact ---------- */
+  .contact-box{
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:56px;
+    background:var(--panel);
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+  }
+  .contact-box h2{ font-size:2rem; margin-bottom:16px; }
+  .contact-box p{ color:var(--muted); margin-bottom:28px; }
+  .contact-list{ list-style:none; }
+  .contact-list li{ margin-bottom:16px; }
+  .contact-list a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.95rem;
+    display:flex; justify-content:space-between;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .contact-list a span.label{ color:var(--muted); }
+  .contact-list a:hover span.label{ color:var(--teal); }
+
+  footer{
+    padding:40px 0;
+    border-top:1px solid var(--line);
+    text-align:center;
+    color:var(--muted);
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px){
+    .navlinks{ display:none; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .ledger{ grid-template-columns:1fr; }
+    .ledger-col + .ledger-col{ border-left:none; border-top:1px solid var(--line); }
+    .projects-grid{ grid-template-columns:1fr; }
+    .contact-box{ grid-template-columns:1fr; padding:32px; }
+    .note{ grid-template-columns:1fr; gap:6px; }
+    section{ padding:80px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
 </head>
 <body>
-  <header class="header">
-    <h1>Your Name</h1>
-    <p>Your Job Title or Description</p>
-  </header>
 
-  <nav class="nav">
-    <a href="#about">About Me</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">Your Name<span class="dot">.</span></a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#notes">Notes</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
+</header>
 
-  <main class="main">
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Write a short introduction about yourself, your interests, and goals.</p>
-      <img src="images/you.jpg" alt="Your Photo">
-    </section>
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Self&#8209;taught IT &middot; Commerce background</span>
+      <h1>Where the <em>ledger</em><br>meets the <em>code</em>.</h1>
+      <p class="lede">
+        I'm <strong>[Your Name]</strong> — a student who learned to build software on my own time,
+        while training formally in commerce. I bring business logic into engineering
+        decisions, and engineering discipline into how I think about business problems.
+      </p>
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-primary">View my work &nbsp;&rarr;</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li>Skill 1</li>
-        <li>Skill 2</li>
-        <li>Skill 3</li>
+    <div class="terminal reveal">
+      <div class="terminal-bar"><span></span><span></span><span></span></div>
+      <div class="terminal-body" id="typedTerminal"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">01 &mdash; About</span>
+      <h2>Two records, one ledger.</h2>
+    </div>
+
+    <div class="ledger reveal">
+      <div class="ledger-col">
+        <span class="ledger-tag">Formally recorded</span>
+        <h3>Commerce education</h3>
+        <p>
+          EDIT: My formal schooling gave me a foundation in accounting, economics,
+          and business logic — how value moves, how decisions get made, and how to
+          read a balance sheet before I ever read a line of code.
+        </p>
+        <ul class="entry-list">
+          <li><span class="k">Institution</span><span class="v">EDIT: School / College Name</span></li>
+          <li><span class="k">Focus</span><span class="v">EDIT: Commerce / Accounting</span></li>
+          <li><span class="k">Status</span><span class="v">EDIT: Currently studying</span></li>
+        </ul>
+      </div>
+
+      <div class="ledger-col">
+        <span class="ledger-tag">Self&#8209;compiled</span>
+        <h3>IT &amp; software skills</h3>
+        <p>
+          EDIT: Everything on the technical side, I taught myself — from documentation,
+          courses, and building things until they broke and then fixing them.
+          No classroom required.
+        </p>
+        <ul class="entry-list">
+          <li><span class="k">Languages</span><span class="v">EDIT: JS, Python, SQL</span></li>
+          <li><span class="k">Tools</span><span class="v">EDIT: Git, VS Code, Excel</span></li>
+          <li><span class="k">Currently learning</span><span class="v">EDIT: ___</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">02 &mdash; Projects</span>
+      <h2>Things I've shipped.</h2>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="card reveal">
+        <div class="stamp">SELF<br>BUILT</div>
+        <h3>EDIT: Project Name One</h3>
+        <p>EDIT: One or two sentences on what this project does and why you built it.
+           Focus on the problem it solves.</p>
+        <div class="tags">
+          <span class="tag">EDIT: React</span>
+          <span class="tag">EDIT: Node.js</span>
+          <span class="tag">EDIT: SQL</span>
+        </div>
+        <div class="links">
+          <a href="#">Live demo</a>
+          <a href="#">Source</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="stamp">SELF<br>BUILT</div>
+        <h3>EDIT: Project Name Two</h3>
+        <p>EDIT: Example — a small invoicing / expense-tracking tool that blends
+           your commerce know-how with a technical build.</p>
+        <div class="tags">
+          <span class="tag">EDIT: Python</span>
+          <span class="tag">EDIT: Excel API</span>
+        </div>
+        <div class="links">
+          <a href="#">Live demo</a>
+          <a href="#">Source</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="stamp">IN<br>PROGRESS</div>
+        <h3>EDIT: Project Name Three</h3>
+        <p>EDIT: A project you're currently building — it's fine to show works in progress.</p>
+        <div class="tags">
+          <span class="tag">EDIT: HTML/CSS</span>
+        </div>
+        <div class="links">
+          <a href="#">Source</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="stamp">SELF<br>BUILT</div>
+        <h3>EDIT: Project Name Four</h3>
+        <p>EDIT: Add as many project cards as you need — duplicate this block.</p>
+        <div class="tags">
+          <span class="tag">EDIT: Tool</span>
+        </div>
+        <div class="links">
+          <a href="#">Live demo</a>
+          <a href="#">Source</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= NOTES / BLOG ================= -->
+<section id="notes">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">03 &mdash; Notes</span>
+      <h2>Ideas, worth keeping.</h2>
+    </div>
+
+    <div class="notes-list reveal">
+      <a class="note" href="#">
+        <span class="date">EDIT: Jul 2026</span>
+        <h4>EDIT: Title of your first note or blog idea</h4>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+      <a class="note" href="#">
+        <span class="date">EDIT: Jun 2026</span>
+        <h4>EDIT: What self-teaching IT actually looks like</h4>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+      <a class="note" href="#">
+        <span class="date">EDIT: May 2026</span>
+        <h4>EDIT: A commerce lens on writing better code</h4>
+        <span class="arrow">Read &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box reveal">
+      <div>
+        <h2>Let's talk.</h2>
+        <p>EDIT: Open to internships, junior roles, or just a conversation about
+           tech and business. I usually reply within a day or two.</p>
+        <div class="cta-row">
+          <a href="mailto:you@example.com" class="btn btn-primary">Email me &nbsp;&rarr;</a>
+        </div>
+      </div>
+      <ul class="contact-list">
+        <li><a href="mailto:you@example.com"><span class="label">Email</span> you@example.com</a></li>
+        <li><a href="https://linkedin.com/in/yourname" target="_blank"><span class="label">LinkedIn</span> /in/yourname</a></li>
+        <li><a href="https://github.com/yourusername" target="_blank"><span class="label">GitHub</span> /yourusername</a></li>
+        <li><a href="#"><span class="label">Resume</span> Download PDF</a></li>
       </ul>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <p>Showcase some of your projects with brief descriptions and links (if applicable).</p>
-    </section>
+<footer>
+  &copy; <span id="year"></span> Your Name — built with self-taught code, filed under commerce.
+</footer>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Provide your contact information (email, social media links etc.).</p>
-    </section>
-  </main>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  <footer class="footer">
-    <p>&copy; 2024 Your Name</p>
-  </footer>
+  // Typed terminal effect
+  const lines = [
+    { p: '~/about', o: 'cat background.txt' },
+    { p: '', o: 'commerce_education = true' },
+    { p: '', o: 'self_taught_it = true' },
+    { p: '', o: 'currently_open_to = ["internships","junior roles"]' },
+    { p: '~/about', o: 'echo $status' },
+    { p: '', o: 'building. learning. shipping.' },
+  ];
+
+  const el = document.getElementById('typedTerminal');
+  let li = 0, ci = 0;
+
+  function typeLine(){
+    if(li >= lines.length){
+      el.innerHTML += '<span class="line"><span class="prompt">guest@portfolio:~$</span> <span class="cursor"></span></span>';
+      return;
+    }
+    const current = lines[li];
+    const text = current.p ? `<span class="prompt">guest@portfolio:${current.p}$</span> ${current.o}` : `<span class="out">${current.o}</span>`;
+    const div = document.createElement('div');
+    div.className = 'line';
+    el.appendChild(div);
+
+    const full = current.o;
+    const prefix = current.p ? `<span class="prompt">guest@portfolio:${current.p}$</span> ` : '';
+    div.innerHTML = prefix;
+    let i = 0;
+    const interval = setInterval(() => {
+      div.innerHTML = prefix + full.slice(0, i+1);
+      i++;
+      if(i >= full.length){
+        clearInterval(interval);
+        li++;
+        setTimeout(typeLine, 260);
+      }
+    }, 18);
+  }
+  typeLine();
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
