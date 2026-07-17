@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Name — Ledger & Code</title>
-<meta name="description" content="Portfolio of [Your Name] — self-taught in IT, grounded in commerce.">
+<title>Nadun Maduwantha — Ledger & Code</title>
+<meta name="description" content="Portfolio of Nadun Maduwantha — self-taught in ICT, grounded in commerce.">
 
 <!-- ============================================================
      EDIT ME: search for "EDIT:" throughout this file to find
-     every spot you should replace with your real info.
+     every spot you should still fill in (projects, links, email).
      ============================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,328 +27,201 @@
     --muted:#8B93A7;
     --radius:2px;
   }
-
   *{box-sizing:border-box; margin:0; padding:0;}
-
   html{scroll-behavior:smooth;}
-
   body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter', sans-serif;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    background:var(--bg); color:var(--text);
+    font-family:'Inter', sans-serif; line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
-
   ::selection{ background:var(--gold); color:var(--bg); }
-
   a{ color:inherit; text-decoration:none; }
-
   .mono{ font-family:'JetBrains Mono', monospace; }
-
-  .wrap{
-    max-width:1120px;
-    margin:0 auto;
-    padding:0 32px;
-  }
-
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 32px; }
   h1,h2,h3{ font-family:'Fraunces', serif; font-weight:500; letter-spacing:-0.01em; }
 
   /* ---------- Nav ---------- */
   header{
-    position:fixed; top:0; left:0; right:0;
-    z-index:100;
-    background:rgba(11,18,32,0.85);
-    backdrop-filter:blur(10px);
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(11,18,32,0.85); backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
-  nav.wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    height:72px;
-  }
-  .brand{
-    font-family:'Fraunces', serif;
-    font-size:1.15rem;
-    display:flex; align-items:baseline; gap:8px;
-  }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .brand{ font-family:'Fraunces', serif; font-size:1.1rem; display:flex; align-items:baseline; gap:8px; }
   .brand .dot{ color:var(--gold); }
-  .navlinks{ display:flex; gap:36px; font-size:0.85rem; }
+  .navlinks{ display:flex; gap:32px; font-size:0.82rem; }
   .navlinks a{
-    color:var(--muted);
-    font-family:'JetBrains Mono', monospace;
-    letter-spacing:0.02em;
-    transition:color .2s;
-    position:relative;
+    color:var(--muted); font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.02em; transition:color .2s; position:relative;
   }
   .navlinks a:hover{ color:var(--text); }
   .navlinks a::after{
-    content:''; position:absolute; left:0; bottom:-6px;
-    width:0; height:1px; background:var(--teal);
-    transition:width .25s;
+    content:''; position:absolute; left:0; bottom:-6px; width:0; height:1px;
+    background:var(--teal); transition:width .25s;
   }
   .navlinks a:hover::after{ width:100%; }
-  .navtoggle{ display:none; }
 
   /* ---------- Hero ---------- */
-  .hero{
-    min-height:100vh;
-    display:flex; align-items:center;
-    padding-top:72px;
-    position:relative;
-  }
+  .hero{ min-height:100vh; display:flex; align-items:center; padding-top:72px; position:relative; }
   .hero::before{
-    /* faint ledger ruling in the background */
-    content:'';
-    position:absolute; inset:0;
-    background-image:repeating-linear-gradient(
-      to bottom, transparent, transparent 47px, var(--line) 48px
-    );
+    content:''; position:absolute; inset:0;
+    background-image:repeating-linear-gradient(to bottom, transparent, transparent 47px, var(--line) 48px);
     opacity:0.25;
     mask-image:linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
     pointer-events:none;
   }
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1.2fr 1fr;
-    gap:64px;
-    align-items:center;
-    position:relative;
-    width:100%;
-  }
+  .hero-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:64px; align-items:center; position:relative; width:100%; }
   .eyebrow{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.78rem;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--gold);
-    display:flex; align-items:center; gap:10px;
-    margin-bottom:22px;
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:10px; margin-bottom:22px;
   }
-  .eyebrow::before{
-    content:''; width:26px; height:1px; background:var(--gold);
+  .eyebrow::before{ content:''; width:26px; height:1px; background:var(--gold); }
+  .hero h1{ font-size:clamp(2.3rem, 4.6vw, 3.9rem); line-height:1.08; margin-bottom:24px; }
+  .hero h1 em{ font-style:italic; color:var(--teal); }
+  .hero p.lede{ color:var(--muted); font-size:1.05rem; max-width:48ch; margin-bottom:30px; }
+
+  .rank-badge{
+    display:inline-flex; align-items:center; gap:10px;
+    border:1px solid var(--line); border-radius:30px;
+    padding:8px 16px; margin-bottom:26px;
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem; color:var(--muted);
   }
-  .hero h1{
-    font-size:clamp(2.4rem, 5vw, 4.1rem);
-    line-height:1.06;
-    margin-bottom:24px;
-  }
-  .hero h1 em{
-    font-style:italic; color:var(--teal);
-  }
-  .hero p.lede{
-    color:var(--muted);
-    font-size:1.05rem;
-    max-width:46ch;
-    margin-bottom:34px;
-  }
+  .rank-badge b{ color:var(--gold); font-weight:600; }
+
   .cta-row{ display:flex; gap:16px; flex-wrap:wrap; }
   .btn{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.85rem;
-    padding:13px 24px;
-    border-radius:var(--radius);
-    border:1px solid var(--line);
-    transition:all .2s;
+    font-family:'JetBrains Mono', monospace; font-size:0.85rem; padding:13px 24px;
+    border-radius:var(--radius); border:1px solid var(--line); transition:all .2s;
     display:inline-flex; align-items:center; gap:8px;
   }
   .btn-primary{ background:var(--teal); color:#08151a; border-color:var(--teal); font-weight:500;}
   .btn-primary:hover{ background:#6fe3d6; }
   .btn-ghost:hover{ border-color:var(--teal); color:var(--teal); }
 
-  /* terminal card */
   .terminal{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:6px;
-    overflow:hidden;
+    background:var(--panel); border:1px solid var(--line); border-radius:6px; overflow:hidden;
     box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
   }
-  .terminal-bar{
-    display:flex; gap:7px;
-    padding:12px 16px;
-    background:var(--panel-alt);
-    border-bottom:1px solid var(--line);
-  }
+  .terminal-bar{ display:flex; gap:7px; padding:12px 16px; background:var(--panel-alt); border-bottom:1px solid var(--line); }
   .terminal-bar span{ width:10px; height:10px; border-radius:50%; background:var(--line); }
-  .terminal-body{
-    padding:22px 20px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.85rem;
-    color:var(--muted);
-    min-height:220px;
-  }
+  .terminal-body{ padding:22px 20px; font-family:'JetBrains Mono', monospace; font-size:0.83rem; color:var(--muted); min-height:230px; }
   .terminal-body .line{ margin-bottom:10px; }
   .terminal-body .prompt{ color:var(--teal); }
-  .terminal-body .out{ color:var(--text); }
-  .cursor{
-    display:inline-block; width:7px; height:1em; background:var(--teal);
-    vertical-align:text-bottom; animation:blink 1s step-end infinite;
-  }
+  .cursor{ display:inline-block; width:7px; height:1em; background:var(--teal); vertical-align:text-bottom; animation:blink 1s step-end infinite; }
   @keyframes blink{ 50%{ opacity:0; } }
 
   /* ---------- Section shell ---------- */
   section{ padding:120px 0; position:relative; }
   .section-head{ margin-bottom:56px; }
-  .section-num{
-    font-family:'JetBrains Mono', monospace;
-    color:var(--gold);
-    font-size:0.8rem;
-    letter-spacing:0.1em;
-    display:block;
-    margin-bottom:10px;
-  }
+  .section-num{ font-family:'JetBrains Mono', monospace; color:var(--gold); font-size:0.8rem; letter-spacing:0.1em; display:block; margin-bottom:10px; }
   .section-head h2{ font-size:clamp(1.8rem, 3vw, 2.6rem); }
+  .section-head p{ color:var(--muted); max-width:60ch; margin-top:14px; }
 
   /* ---------- About: dual ledger ---------- */
-  .ledger{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:0;
-    border:1px solid var(--line);
-    border-radius:6px;
-    overflow:hidden;
-  }
-  .ledger-col{
-    padding:40px;
-    background:var(--panel);
-  }
+  .ledger{ display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  .ledger-col{ padding:40px; background:var(--panel); }
   .ledger-col + .ledger-col{ border-left:1px solid var(--line); }
-  .ledger-col h3{
-    font-size:1.3rem;
-    margin-bottom:6px;
-  }
+  .ledger-col h3{ font-size:1.3rem; margin-bottom:6px; }
   .ledger-tag{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.72rem;
-    color:var(--muted);
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    margin-bottom:20px;
-    display:block;
+    font-family:'JetBrains Mono', monospace; font-size:0.72rem; color:var(--muted);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:20px; display:block;
   }
   .ledger-col p{ color:var(--muted); margin-bottom:20px; font-size:0.95rem;}
   .entry-list{ list-style:none; }
-  .entry-list li{
-    display:flex; justify-content:space-between; gap:16px;
-    padding:10px 0;
-    border-top:1px dashed var(--line);
-    font-size:0.88rem;
-  }
+  .entry-list li{ display:flex; justify-content:space-between; gap:16px; padding:10px 0; border-top:1px dashed var(--line); font-size:0.88rem; }
   .entry-list li:first-child{ border-top:none; }
   .entry-list .k{ color:var(--text); }
   .entry-list .v{ color:var(--muted); font-family:'JetBrains Mono', monospace; font-size:0.8rem; text-align:right;}
 
-  /* ---------- Projects ---------- */
-  .projects-grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:28px;
+  /* ---------- Academic Ledger (results) ---------- */
+  .results-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .result-card{ background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:36px; }
+  .result-card .rc-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:22px; }
+  .result-card h3{ font-size:1.25rem; }
+  .result-card .rc-meta{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+  .grade-row{
+    display:grid; grid-template-columns:1fr auto; align-items:center; gap:10px;
+    padding:13px 0; border-top:1px dashed var(--line);
   }
-  .card{
-    background:var(--panel);
+  .grade-row:first-of-type{ border-top:none; }
+  .grade-row .subject{ font-size:0.93rem; color:var(--text); }
+  .grade-pill{
+    font-family:'JetBrains Mono', monospace; font-size:0.75rem; font-weight:600;
+    width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;
     border:1px solid var(--line);
-    border-radius:6px;
-    padding:32px;
-    position:relative;
-    transition:transform .25s, border-color .25s;
   }
+  .grade-pill.A{ color:var(--gold); border-color:var(--gold); }
+  .grade-pill.B{ color:var(--teal); border-color:var(--teal); }
+  .rank-strip{
+    margin-top:22px; padding-top:18px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem; color:var(--muted);
+  }
+  .rank-strip b{ color:var(--gold); font-size:1rem; }
+
+  /* ---------- Skills ---------- */
+  .skills-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; }
+  .skill-card{ background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:32px; }
+  .skill-card .sk-icon{ font-family:'JetBrains Mono', monospace; color:var(--gold); font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; display:block; }
+  .skill-card h3{ font-size:1.1rem; margin-bottom:18px; }
+  .tag-cloud{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    font-family:'JetBrains Mono', monospace; font-size:0.72rem; color:var(--teal);
+    border:1px solid var(--line); padding:5px 11px; border-radius:20px;
+  }
+
+  /* ---------- Projects ---------- */
+  .projects-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:28px; }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:32px; position:relative; transition:transform .25s, border-color .25s; }
   .card:hover{ transform:translateY(-4px); border-color:var(--teal); }
   .stamp{
-    position:absolute; top:24px; right:24px;
-    width:58px; height:58px;
-    border:1px solid var(--gold);
-    border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    transform:rotate(-12deg);
-    color:var(--gold);
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.55rem;
-    text-align:center;
-    letter-spacing:0.05em;
-    line-height:1.15;
-    opacity:0.85;
+    position:absolute; top:24px; right:24px; width:58px; height:58px;
+    border:1px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center;
+    transform:rotate(-12deg); color:var(--gold); font-family:'JetBrains Mono', monospace; font-size:0.55rem;
+    text-align:center; letter-spacing:0.05em; line-height:1.15; opacity:0.85;
   }
   .card h3{ font-size:1.2rem; margin:0 60px 10px 0; }
   .card p{ color:var(--muted); font-size:0.9rem; margin-bottom:20px; }
   .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
-  .tag{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.7rem;
-    color:var(--teal);
-    border:1px solid var(--line);
-    padding:4px 10px;
-    border-radius:20px;
-  }
   .card .links{ display:flex; gap:18px; font-family:'JetBrains Mono', monospace; font-size:0.78rem; }
   .card .links a{ color:var(--text); border-bottom:1px solid var(--line); padding-bottom:2px; }
   .card .links a:hover{ color:var(--teal); border-color:var(--teal); }
 
   /* ---------- Notes / Blog ---------- */
   .notes-list{ border-top:1px solid var(--line); }
-  .note{
-    display:grid;
-    grid-template-columns:120px 1fr auto;
-    gap:24px;
-    align-items:baseline;
-    padding:26px 0;
-    border-bottom:1px solid var(--line);
-    transition:padding-left .2s;
-  }
+  .note{ display:grid; grid-template-columns:120px 1fr auto; gap:24px; align-items:baseline; padding:26px 0; border-bottom:1px solid var(--line); transition:padding-left .2s; }
   .note:hover{ padding-left:10px; }
   .note .date{ font-family:'JetBrains Mono', monospace; color:var(--muted); font-size:0.8rem; }
   .note h4{ font-family:'Fraunces', serif; font-weight:500; font-size:1.1rem; }
   .note .arrow{ color:var(--gold); font-family:'JetBrains Mono', monospace; }
 
   /* ---------- Contact ---------- */
-  .contact-box{
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:56px;
-    background:var(--panel);
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:48px;
-  }
+  .contact-box{ border:1px solid var(--line); border-radius:6px; padding:56px; background:var(--panel); display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; }
   .contact-box h2{ font-size:2rem; margin-bottom:16px; }
   .contact-box p{ color:var(--muted); margin-bottom:28px; }
   .contact-list{ list-style:none; }
   .contact-list li{ margin-bottom:16px; }
-  .contact-list a{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.95rem;
-    display:flex; justify-content:space-between;
-    padding:14px 0;
-    border-bottom:1px solid var(--line);
-  }
+  .contact-list a{ font-family:'JetBrains Mono', monospace; font-size:0.95rem; display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); }
   .contact-list a span.label{ color:var(--muted); }
   .contact-list a:hover span.label{ color:var(--teal); }
 
-  footer{
-    padding:40px 0;
-    border-top:1px solid var(--line);
-    text-align:center;
-    color:var(--muted);
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.78rem;
-  }
+  footer{ padding:40px 0; border-top:1px solid var(--line); text-align:center; color:var(--muted); font-family:'JetBrains Mono', monospace; font-size:0.78rem; }
 
-  /* ---------- Reveal on scroll ---------- */
   .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
   .reveal.in{ opacity:1; transform:none; }
 
-  /* ---------- Responsive ---------- */
   @media (max-width: 860px){
     .navlinks{ display:none; }
     .hero-grid{ grid-template-columns:1fr; }
     .ledger{ grid-template-columns:1fr; }
     .ledger-col + .ledger-col{ border-left:none; border-top:1px solid var(--line); }
+    .results-grid{ grid-template-columns:1fr; }
+    .skills-grid{ grid-template-columns:1fr; }
     .projects-grid{ grid-template-columns:1fr; }
     .contact-box{ grid-template-columns:1fr; padding:32px; }
     .note{ grid-template-columns:1fr; gap:6px; }
     section{ padding:80px 0; }
   }
-
   @media (prefers-reduced-motion: reduce){
     *{ animation:none !important; transition:none !important; }
     .reveal{ opacity:1; transform:none; }
@@ -359,9 +232,11 @@
 
 <header>
   <nav class="wrap">
-    <a href="#top" class="brand">Your Name<span class="dot">.</span></a>
+    <a href="#top" class="brand">Nadun Maduwantha<span class="dot">.</span></a>
     <div class="navlinks">
       <a href="#about">About</a>
+      <a href="#academics">Academics</a>
+      <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#notes">Notes</a>
       <a href="#contact">Contact</a>
@@ -373,13 +248,15 @@
 <section class="hero" id="top">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Self&#8209;taught IT &middot; Commerce background</span>
+      <span class="eyebrow">Self&#8209;taught ICT &middot; Commerce background</span>
       <h1>Where the <em>ledger</em><br>meets the <em>code</em>.</h1>
       <p class="lede">
-        I'm <strong>[Your Name]</strong> — a student who learned to build software on my own time,
-        while training formally in commerce. I bring business logic into engineering
-        decisions, and engineering discipline into how I think about business problems.
+        I'm <strong>Nadun Maduwantha</strong> — a student from Mayurapada Central College, Narammala,
+        trained formally in Commerce and self-taught in web, application, and mobile development.
+        I bring business logic into engineering decisions, and engineering discipline into how
+        I think about business problems.
       </p>
+      <div class="rank-badge">District Rank <b>312</b> &middot; G.C.E. Advanced Level</div>
       <div class="cta-row">
         <a href="#projects" class="btn btn-primary">View my work &nbsp;&rarr;</a>
         <a href="#contact" class="btn btn-ghost">Get in touch</a>
@@ -406,30 +283,122 @@
         <span class="ledger-tag">Formally recorded</span>
         <h3>Commerce education</h3>
         <p>
-          EDIT: My formal schooling gave me a foundation in accounting, economics,
-          and business logic — how value moves, how decisions get made, and how to
-          read a balance sheet before I ever read a line of code.
+          My formal schooling at Mayurapada Central College, Narammala gave me a foundation in
+          accounting, economics, and business logic — how value moves, how decisions get made,
+          and how to read a balance sheet.
         </p>
         <ul class="entry-list">
-          <li><span class="k">Institution</span><span class="v">EDIT: School / College Name</span></li>
-          <li><span class="k">Focus</span><span class="v">EDIT: Commerce / Accounting</span></li>
-          <li><span class="k">Status</span><span class="v">EDIT: Currently studying</span></li>
+          <li><span class="k">School</span><span class="v">Mayurapada Central College, Narammala</span></li>
+          <li><span class="k">A/L Stream</span><span class="v">Commerce</span></li>
+          <li><span class="k">District Rank</span><span class="v">312</span></li>
         </ul>
       </div>
 
       <div class="ledger-col">
         <span class="ledger-tag">Self&#8209;compiled</span>
-        <h3>IT &amp; software skills</h3>
+        <h3>ICT &amp; software skills</h3>
         <p>
-          EDIT: Everything on the technical side, I taught myself — from documentation,
-          courses, and building things until they broke and then fixing them.
-          No classroom required.
+          Everything technical, I taught myself — web development, application development,
+          and mobile app development — from documentation, courses, and building real things
+          until they broke, then fixing them. No classroom required.
         </p>
         <ul class="entry-list">
-          <li><span class="k">Languages</span><span class="v">EDIT: JS, Python, SQL</span></li>
-          <li><span class="k">Tools</span><span class="v">EDIT: Git, VS Code, Excel</span></li>
-          <li><span class="k">Currently learning</span><span class="v">EDIT: ___</span></li>
+          <li><span class="k">Focus areas</span><span class="v">Web / App / Mobile Dev</span></li>
+          <li><span class="k">Status</span><span class="v">Building real-world projects</span></li>
+          <li><span class="k">Method</span><span class="v">Self-directed learning</span></li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACADEMIC LEDGER ================= -->
+<section id="academics">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">02 &mdash; Academic Record</span>
+      <h2>Filed &amp; verified.</h2>
+      <p>Every grade below is a real entry — the same discipline I bring to a codebase.</p>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-card reveal">
+        <div class="rc-head">
+          <h3>G.C.E. Advanced Level</h3>
+          <span class="rc-meta">Commerce Stream</span>
+        </div>
+        <div class="grade-row"><span class="subject">Accounting</span><span class="grade-pill B">B</span></div>
+        <div class="grade-row"><span class="subject">Economics</span><span class="grade-pill A">A</span></div>
+        <div class="grade-row"><span class="subject">ICT</span><span class="grade-pill B">B</span></div>
+        <div class="rank-strip">
+          <span>Island-wide standing</span>
+          <span>District Rank <b>312</b></span>
+        </div>
+      </div>
+
+      <div class="result-card reveal">
+        <div class="rc-head">
+          <h3>G.C.E. Ordinary Level</h3>
+          <span class="rc-meta">9 Subjects</span>
+        </div>
+        <div class="grade-row"><span class="subject">Mathematics</span><span class="grade-pill A">A</span></div>
+        <div class="grade-row"><span class="subject">English</span><span class="grade-pill A">A</span></div>
+        <div class="grade-row"><span class="subject">ICT</span><span class="grade-pill A">A</span></div>
+        <div class="grade-row"><span class="subject">Tamil</span><span class="grade-pill B">B</span></div>
+        <div class="rank-strip">
+          <span>Foundation for ICT specialization</span>
+          <span>3 &times; A</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">03 &mdash; Skills</span>
+      <h2>What I work with.</h2>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <span class="sk-icon">Development</span>
+        <h3>Programming &amp; Building</h3>
+        <div class="tag-cloud">
+          <span class="tag">EDIT: HTML/CSS</span>
+          <span class="tag">EDIT: JavaScript</span>
+          <span class="tag">EDIT: Python</span>
+          <span class="tag">EDIT: Java</span>
+          <span class="tag">EDIT: SQL</span>
+          <span class="tag">Web Development</span>
+          <span class="tag">App Development</span>
+          <span class="tag">Mobile App Development</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <span class="sk-icon">Business &amp; Analytics</span>
+        <h3>Tools of the trade</h3>
+        <div class="tag-cloud">
+          <span class="tag">MS Excel</span>
+          <span class="tag">QuickBooks</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">MS Office</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <span class="sk-icon">Beyond the code</span>
+        <h3>Soft skills</h3>
+        <div class="tag-cloud">
+          <span class="tag">EDIT: Communication</span>
+          <span class="tag">EDIT: Problem-solving</span>
+          <span class="tag">EDIT: Teamwork</span>
+          <span class="tag">EDIT: Time management</span>
+          <span class="tag">EDIT: Adaptability</span>
+        </div>
       </div>
     </div>
   </div>
@@ -439,68 +408,43 @@
 <section id="projects">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="section-num">02 &mdash; Projects</span>
-      <h2>Things I've shipped.</h2>
+      <span class="section-num">04 &mdash; Projects</span>
+      <h2>Things I've built.</h2>
+      <p>EDIT: Replace these four cards with your real self-projects and current real-world work — duplicate a card block for more.</p>
     </div>
 
     <div class="projects-grid">
-
       <div class="card reveal">
         <div class="stamp">SELF<br>BUILT</div>
-        <h3>EDIT: Project Name One</h3>
-        <p>EDIT: One or two sentences on what this project does and why you built it.
-           Focus on the problem it solves.</p>
-        <div class="tags">
-          <span class="tag">EDIT: React</span>
-          <span class="tag">EDIT: Node.js</span>
-          <span class="tag">EDIT: SQL</span>
-        </div>
-        <div class="links">
-          <a href="#">Live demo</a>
-          <a href="#">Source</a>
-        </div>
+        <h3>EDIT: Web Project Name</h3>
+        <p>EDIT: One or two sentences on what this project does and the problem it solves.</p>
+        <div class="tags"><span class="tag">EDIT: HTML/CSS</span><span class="tag">EDIT: JavaScript</span></div>
+        <div class="links"><a href="#">Live demo</a><a href="#">Source</a></div>
       </div>
 
       <div class="card reveal">
         <div class="stamp">SELF<br>BUILT</div>
-        <h3>EDIT: Project Name Two</h3>
-        <p>EDIT: Example — a small invoicing / expense-tracking tool that blends
-           your commerce know-how with a technical build.</p>
-        <div class="tags">
-          <span class="tag">EDIT: Python</span>
-          <span class="tag">EDIT: Excel API</span>
-        </div>
-        <div class="links">
-          <a href="#">Live demo</a>
-          <a href="#">Source</a>
-        </div>
+        <h3>EDIT: Application Project Name</h3>
+        <p>EDIT: Describe an application you've built — desktop or web-based.</p>
+        <div class="tags"><span class="tag">EDIT: Python</span><span class="tag">EDIT: SQL</span></div>
+        <div class="links"><a href="#">Live demo</a><a href="#">Source</a></div>
+      </div>
+
+      <div class="card reveal">
+        <div class="stamp">SELF<br>BUILT</div>
+        <h3>EDIT: Mobile App Name</h3>
+        <p>EDIT: Describe a mobile app project — platform, purpose, and outcome.</p>
+        <div class="tags"><span class="tag">EDIT: Mobile Dev</span></div>
+        <div class="links"><a href="#">Source</a></div>
       </div>
 
       <div class="card reveal">
         <div class="stamp">IN<br>PROGRESS</div>
-        <h3>EDIT: Project Name Three</h3>
-        <p>EDIT: A project you're currently building — it's fine to show works in progress.</p>
-        <div class="tags">
-          <span class="tag">EDIT: HTML/CSS</span>
-        </div>
-        <div class="links">
-          <a href="#">Source</a>
-        </div>
+        <h3>EDIT: Current Real-World Project</h3>
+        <p>EDIT: You mentioned working on real-world projects currently — name and describe one here.</p>
+        <div class="tags"><span class="tag">EDIT: Tech stack</span></div>
+        <div class="links"><a href="#">Source</a></div>
       </div>
-
-      <div class="card reveal">
-        <div class="stamp">SELF<br>BUILT</div>
-        <h3>EDIT: Project Name Four</h3>
-        <p>EDIT: Add as many project cards as you need — duplicate this block.</p>
-        <div class="tags">
-          <span class="tag">EDIT: Tool</span>
-        </div>
-        <div class="links">
-          <a href="#">Live demo</a>
-          <a href="#">Source</a>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -509,24 +453,24 @@
 <section id="notes">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="section-num">03 &mdash; Notes</span>
+      <span class="section-num">05 &mdash; Notes</span>
       <h2>Ideas, worth keeping.</h2>
     </div>
 
     <div class="notes-list reveal">
       <a class="note" href="#">
         <span class="date">EDIT: Jul 2026</span>
-        <h4>EDIT: Title of your first note or blog idea</h4>
+        <h4>EDIT: What self-teaching ICT after commerce A/Ls actually looks like</h4>
         <span class="arrow">Read &rarr;</span>
       </a>
       <a class="note" href="#">
         <span class="date">EDIT: Jun 2026</span>
-        <h4>EDIT: What self-teaching IT actually looks like</h4>
+        <h4>EDIT: How Power BI changed how I think about data</h4>
         <span class="arrow">Read &rarr;</span>
       </a>
       <a class="note" href="#">
         <span class="date">EDIT: May 2026</span>
-        <h4>EDIT: A commerce lens on writing better code</h4>
+        <h4>EDIT: A note on your first real-world project</h4>
         <span class="arrow">Read &rarr;</span>
       </a>
     </div>
@@ -539,16 +483,16 @@
     <div class="contact-box reveal">
       <div>
         <h2>Let's talk.</h2>
-        <p>EDIT: Open to internships, junior roles, or just a conversation about
-           tech and business. I usually reply within a day or two.</p>
+        <p>Open to internships, junior roles, or just a conversation about tech and business.
+           I usually reply within a day or two.</p>
         <div class="cta-row">
-          <a href="mailto:you@example.com" class="btn btn-primary">Email me &nbsp;&rarr;</a>
+          <a href="mailto:EDIT_your_email@example.com" class="btn btn-primary">Email me &nbsp;&rarr;</a>
         </div>
       </div>
       <ul class="contact-list">
-        <li><a href="mailto:you@example.com"><span class="label">Email</span> you@example.com</a></li>
-        <li><a href="https://linkedin.com/in/yourname" target="_blank"><span class="label">LinkedIn</span> /in/yourname</a></li>
-        <li><a href="https://github.com/yourusername" target="_blank"><span class="label">GitHub</span> /yourusername</a></li>
+        <li><a href="mailto:EDIT_your_email@example.com"><span class="label">Email</span> EDIT_your_email@example.com</a></li>
+        <li><a href="https://linkedin.com/in/EDIT_yourname" target="_blank"><span class="label">LinkedIn</span> /in/EDIT_yourname</a></li>
+        <li><a href="https://github.com/EDIT_yourusername" target="_blank"><span class="label">GitHub</span> /EDIT_yourusername</a></li>
         <li><a href="#"><span class="label">Resume</span> Download PDF</a></li>
       </ul>
     </div>
@@ -556,24 +500,24 @@
 </section>
 
 <footer>
-  &copy; <span id="year"></span> Your Name — built with self-taught code, filed under commerce.
+  &copy; <span id="year"></span> Nadun Maduwantha — built with self-taught code, filed under commerce.
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Typed terminal effect
   const lines = [
     { p: '~/about', o: 'cat background.txt' },
-    { p: '', o: 'commerce_education = true' },
-    { p: '', o: 'self_taught_it = true' },
-    { p: '', o: 'currently_open_to = ["internships","junior roles"]' },
+    { p: '', o: 'name = "Nadun Maduwantha"' },
+    { p: '', o: 'stream = "Commerce (A/L)"' },
+    { p: '', o: 'self_taught = ["web dev","app dev","mobile dev"]' },
+    { p: '', o: 'tools = ["Excel","QuickBooks","Power BI"]' },
     { p: '~/about', o: 'echo $status' },
     { p: '', o: 'building. learning. shipping.' },
   ];
 
   const el = document.getElementById('typedTerminal');
-  let li = 0, ci = 0;
+  let li = 0;
 
   function typeLine(){
     if(li >= lines.length){
@@ -581,13 +525,11 @@
       return;
     }
     const current = lines[li];
-    const text = current.p ? `<span class="prompt">guest@portfolio:${current.p}$</span> ${current.o}` : `<span class="out">${current.o}</span>`;
     const div = document.createElement('div');
     div.className = 'line';
     el.appendChild(div);
-
     const full = current.o;
-    const prefix = current.p ? `<span class="prompt">guest@portfolio:${current.p}$</span> ` : '';
+    const prefix = current.p ? `<span class="prompt">guest@portfolio:${current.p}$</span> ` : '<span class="prompt">&gt;</span> ';
     div.innerHTML = prefix;
     let i = 0;
     const interval = setInterval(() => {
@@ -602,7 +544,6 @@
   }
   typeLine();
 
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); } });
   }, { threshold: 0.15 });
