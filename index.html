@@ -31,6 +31,33 @@
     position:relative;
   }
   ::selection{ background:var(--gold); color:var(--bg); }
+
+  /* ---------- Custom scrollbar ---------- */
+  html{ scrollbar-color:var(--teal) var(--bg); scrollbar-width:thin; }
+  ::-webkit-scrollbar{ width:11px; }
+  ::-webkit-scrollbar-track{ background:var(--bg); }
+  ::-webkit-scrollbar-thumb{
+    background:linear-gradient(var(--teal), var(--gold));
+    border-radius:10px; border:3px solid var(--bg);
+  }
+  ::-webkit-scrollbar-thumb:hover{ background:linear-gradient(var(--gold), var(--teal)); }
+
+  /* ---------- Custom cursor (fine-pointer devices only) ---------- */
+  @media (hover:hover) and (pointer:fine){
+    html.custom-cursor, html.custom-cursor *{ cursor:none !important; }
+  }
+  .cursor-dot, .cursor-ring{
+    position:fixed; top:0; left:0; z-index:9999; pointer-events:none;
+    border-radius:50%; transform:translate(-50%,-50%);
+  }
+  .cursor-dot{ width:6px; height:6px; background:var(--teal); box-shadow:0 0 8px var(--teal); }
+  .cursor-ring{
+    width:34px; height:34px; border:1px solid var(--teal);
+    opacity:0.7; transition:width .18s, height .18s, border-color .18s, opacity .18s;
+  }
+  .cursor-ring.active{ width:52px; height:52px; border-color:var(--gold); opacity:0.9; }
+  .cursor-dot, .cursor-ring{ display:none; }
+  html.custom-cursor .cursor-dot, html.custom-cursor .cursor-ring{ display:block; }
   a{ color:inherit; text-decoration:none; }
   .mono{ font-family:'JetBrains Mono', monospace; }
   .wrap{ max-width:1120px; margin:0 auto; padding:0 32px; }
@@ -70,8 +97,14 @@
   /* ---------- Nav ---------- */
   header{
     position:fixed; top:0; left:0; right:0; z-index:100;
+    background:transparent; backdrop-filter:none;
+    border-bottom:1px solid transparent;
+    transition:background .4s ease, backdrop-filter .4s ease, border-color .4s ease, box-shadow .4s ease;
+  }
+  header.scrolled{
     background:rgba(11,18,32,0.85); backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+    border-bottom-color:var(--line);
+    box-shadow:0 8px 24px -16px rgba(0,0,0,0.5);
   }
   nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:72px; }
   .brand{ font-family:'Fraunces', serif; font-size:1.1rem; display:flex; align-items:baseline; gap:8px; z-index:110; }
@@ -328,6 +361,85 @@
   .to-top.show{ opacity:1; visibility:visible; transform:translateY(0); }
   .to-top:hover{ box-shadow:0 0 16px rgba(79,209,197,0.35); border-color:var(--teal); }
 
+  /* ---------- CCTV avatar tracker ---------- */
+  .cctv-avatar{
+    position:fixed; left:18px; bottom:18px; z-index:60;
+    width:150px; pointer-events:none;
+    opacity:0; transform:translateY(16px);
+    transition:opacity .5s ease, transform .5s ease;
+    font-family:'JetBrains Mono', monospace;
+  }
+  .cctv-avatar.show{ opacity:1; transform:translateY(0); }
+
+  .cctv-frame{
+    position:relative; width:150px; height:150px; border-radius:50%;
+    perspective:400px;
+    background:var(--panel); border:1px solid var(--line);
+    box-shadow:0 20px 40px -20px rgba(0,0,0,0.7);
+    overflow:hidden;
+  }
+  .cctv-frame img, .cctv-frame .cctv-fallback{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; border-radius:50%;
+    transition:transform .16s ease-out;
+    transform-style:preserve-3d;
+  }
+  .cctv-fallback{
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--panel-alt), #1c2947);
+    color:var(--teal); font-size:1.6rem; font-weight:600;
+    letter-spacing:0.05em;
+  }
+  .cctv-scan{
+    position:absolute; left:0; right:0; height:26%;
+    background:linear-gradient(to bottom, transparent, rgba(79,209,197,0.22), transparent);
+    animation:cctv-scan-move 3.2s linear infinite;
+  }
+  @keyframes cctv-scan-move{ 0%{ top:-30%; } 100%{ top:110%; } }
+
+  .cctv-ring{
+    position:absolute; inset:6px; border-radius:50%;
+    border:1px dashed rgba(79,209,197,0.5);
+    animation:cctv-rotate 14s linear infinite;
+  }
+  @keyframes cctv-rotate{ to{ transform:rotate(360deg); } }
+
+  .cctv-bracket{ position:absolute; width:14px; height:14px; border-color:var(--gold); opacity:0.9; }
+  .cctv-bracket.tl{ top:-2px; left:-2px; border-top:2px solid; border-left:2px solid; }
+  .cctv-bracket.tr{ top:-2px; right:-2px; border-top:2px solid; border-right:2px solid; }
+  .cctv-bracket.bl{ bottom:-2px; left:-2px; border-bottom:2px solid; border-left:2px solid; }
+  .cctv-bracket.br{ bottom:-2px; right:-2px; border-bottom:2px solid; border-right:2px solid; }
+
+  .cctv-reticle{
+    position:absolute; top:0; left:0; width:8px; height:8px; margin:-4px;
+    border-radius:50%; background:var(--gold); box-shadow:0 0 8px var(--gold);
+    transition:transform .08s linear;
+  }
+
+  .cctv-label{
+    margin-top:10px; font-size:0.66rem; color:var(--muted);
+    display:flex; align-items:center; gap:6px; letter-spacing:0.04em;
+    background:rgba(18,26,46,0.7); border:1px solid var(--line);
+    padding:5px 9px; border-radius:20px; width:fit-content;
+  }
+  .rec-dot{
+    width:6px; height:6px; border-radius:50%; background:#ff5c5c;
+    box-shadow:0 0 6px #ff5c5c; animation:rec-blink 1.4s ease-in-out infinite;
+  }
+  @keyframes rec-blink{ 0%,100%{ opacity:1; } 50%{ opacity:0.25; } }
+
+  @media (max-width:860px){
+    .cctv-avatar{ width:100px; left:10px; bottom:10px; }
+    .cctv-frame{ width:100px; height:100px; }
+    .cctv-label{ font-size:0.58rem; }
+  }
+  @media (max-width:480px){
+    .cctv-avatar{ opacity:0.9; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cctv-avatar{ display:none; }
+  }
+
   /* ---------- Desk buddy (animated character) ---------- */
   .desk-buddy{
     position:fixed; right:18px; bottom:18px; z-index:60;
@@ -455,6 +567,9 @@
 </style>
 </head>
 <body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 <div class="glow-field">
   <div class="glow-orb g1"></div>
@@ -820,6 +935,22 @@
 
 <button class="to-top" id="toTop" aria-label="Back to top">&uarr;</button>
 
+<div class="cctv-avatar" id="cctvAvatar" aria-hidden="true">
+  <div class="cctv-frame" id="cctvFrame">
+    <img id="avatarImg" src="assets/avatar.jpg" alt="Nadun Maduwantha"
+         onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='flex';">
+    <div class="cctv-fallback" id="avatarFallback" style="display:none;">NM</div>
+    <div class="cctv-scan"></div>
+    <div class="cctv-ring"></div>
+    <div class="cctv-bracket tl"></div>
+    <div class="cctv-bracket tr"></div>
+    <div class="cctv-bracket bl"></div>
+    <div class="cctv-bracket br"></div>
+    <div class="cctv-reticle" id="cctvReticle"></div>
+  </div>
+  <div class="cctv-label"><span class="rec-dot"></span> LIVE &middot; <span id="cctvCoords">TRACKING</span></div>
+</div>
+
 <div class="desk-buddy" id="deskBuddy" aria-hidden="true">
   <svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
 
@@ -914,11 +1045,13 @@
   });
   mobileMenu.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', closeMenu));
 
-  /* ---- Scroll progress bar + back-to-top + hero parallax ---- */
+  /* ---- Scroll progress bar + back-to-top + hero parallax + header state ---- */
   const progressBar = document.getElementById('progressBar');
   const toTop = document.getElementById('toTop');
   const heroLines = document.getElementById('heroLines');
   const deskBuddy = document.getElementById('deskBuddy');
+  const cctvAvatar = document.getElementById('cctvAvatar');
+  const siteHeader = document.querySelector('header');
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -926,16 +1059,75 @@
     progressBar.style.width = pct + '%';
     toTop.classList.toggle('show', scrollTop > 500);
     if(heroLines){ heroLines.style.transform = 'translateY(' + (scrollTop * 0.15) + 'px)'; }
+    siteHeader.classList.toggle('scrolled', scrollTop > 40);
 
-    /* desk buddy: fades in once you've scrolled past the hero,
-       and steps aside near the footer so it never covers the contact info */
-    if(deskBuddy){
-      const pastHero = scrollTop > window.innerHeight * 0.5;
-      const nearBottom = (scrollTop + window.innerHeight) > (document.documentElement.scrollHeight - 260);
-      deskBuddy.classList.toggle('show', pastHero && !nearBottom);
-    }
+    /* desk buddy + cctv avatar: fade in once past the hero,
+       step aside near the footer so they never cover contact info */
+    const pastHero = scrollTop > window.innerHeight * 0.5;
+    const nearBottom = (scrollTop + window.innerHeight) > (document.documentElement.scrollHeight - 260);
+    if(deskBuddy){ deskBuddy.classList.toggle('show', pastHero && !nearBottom); }
+    if(cctvAvatar){ cctvAvatar.classList.toggle('show', pastHero && !nearBottom); }
   }, { passive:true });
   toTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+  /* ---- Custom cursor + CCTV avatar cursor-tracking (fine-pointer devices only) ---- */
+  if(window.matchMedia('(hover: hover) and (pointer: fine)').matches){
+    document.documentElement.classList.add('custom-cursor');
+
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorRing = document.getElementById('cursorRing');
+    let ringX = window.innerWidth/2, ringY = window.innerHeight/2;
+    let mouseX = ringX, mouseY = ringY;
+
+    const cctvFrame = document.getElementById('cctvFrame');
+    const cctvReticle = document.getElementById('cctvReticle');
+    const cctvCoords = document.getElementById('cctvCoords');
+    const avatarImg = document.getElementById('avatarImg');
+    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursorDot.style.left = mouseX + 'px';
+      cursorDot.style.top = mouseY + 'px';
+
+      /* CCTV avatar looks toward the cursor */
+      if(cctvFrame){
+        const rect = cctvFrame.getBoundingClientRect();
+        const cx = rect.left + rect.width/2;
+        const cy = rect.top + rect.height/2;
+        const dx = mouseX - cx;
+        const dy = mouseY - cy;
+        const angle = Math.atan2(dy, dx);
+        const r = rect.width/2 - 4;
+        const rx = rect.width/2 + Math.cos(angle) * r;
+        const ry = rect.height/2 + Math.sin(angle) * r;
+        if(cctvReticle){ cctvReticle.style.transform = `translate(${rx}px, ${ry}px)`; }
+        if(avatarImg){
+          const tiltX = clamp(dy/50, -8, 8);
+          const tiltY = clamp(-dx/50, -8, 8);
+          avatarImg.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.05)`;
+        }
+        if(cctvCoords){
+          cctvCoords.textContent = 'X:' + String(Math.round(mouseX)).padStart(3,'0') + ' Y:' + String(Math.round(mouseY)).padStart(3,'0');
+        }
+      }
+    }, { passive:true });
+
+    document.querySelectorAll('a, button, .tag, input, textarea').forEach(el => {
+      el.addEventListener('mouseenter', () => cursorRing.classList.add('active'));
+      el.addEventListener('mouseleave', () => cursorRing.classList.remove('active'));
+    });
+
+    function animateRing(){
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+  }
+
 
   /* ---- Typed terminal effect ---- */
   const lines = [
