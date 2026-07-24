@@ -170,6 +170,26 @@
     border:1px solid var(--line); padding:5px 11px; border-radius:20px;
   }
 
+  /* ---------- Certificates ---------- */
+  .cert-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; }
+  .cert-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:6px;
+    overflow:hidden; transition:transform .25s, border-color .25s;
+  }
+  .cert-card:hover{ transform:translateY(-4px); border-color:var(--teal); }
+  .cert-thumb{
+    width:100%; aspect-ratio:4/3; object-fit:cover; display:block;
+    background:var(--panel-alt); border-bottom:1px solid var(--line);
+  }
+  .cert-body{ padding:20px 22px; }
+  .cert-body h3{ font-size:1rem; margin-bottom:6px; }
+  .cert-body span.issuer{ font-family:'JetBrains Mono', monospace; font-size:0.72rem; color:var(--muted); display:block; margin-bottom:14px; }
+  .cert-body a.view{
+    font-family:'JetBrains Mono', monospace; font-size:0.78rem; color:var(--teal);
+    border-bottom:1px solid var(--line); padding-bottom:2px;
+  }
+  .cert-body a.view:hover{ border-color:var(--teal); }
+
   /* ---------- Projects ---------- */
   .projects-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:28px; }
   .card{ background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:32px; position:relative; transition:transform .25s, border-color .25s; }
@@ -237,6 +257,7 @@
       <a href="#about">About</a>
       <a href="#academics">Academics</a>
       <a href="#skills">Skills</a>
+      <a href="#certificates">Certificates</a>
       <a href="#projects">Projects</a>
       <a href="#notes">Notes</a>
       <a href="#contact">Contact</a>
@@ -404,11 +425,52 @@
   </div>
 </section>
 
+<!-- ================= CERTIFICATES ================= -->
+<section id="certificates">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">04 &mdash; Certificates</span>
+      <h2>Proof, on file.</h2>
+      <p>EDIT: Upload your certificate images/PDFs into a "certificates" folder in your repo,
+         then point each card below to the matching filename.</p>
+    </div>
+
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <img class="cert-thumb" src="certificates/al-results.jpg" alt="G.C.E. A/L Results Certificate" onerror="this.style.display='none'">
+        <div class="cert-body">
+          <h3>EDIT: G.C.E. Advanced Level Results</h3>
+          <span class="issuer">EDIT: Dept. of Examinations, Sri Lanka</span>
+          <a class="view" href="certificates/al-results.pdf" target="_blank">View PDF &rarr;</a>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <img class="cert-thumb" src="certificates/ol-results.jpg" alt="G.C.E. O/L Results Certificate" onerror="this.style.display='none'">
+        <div class="cert-body">
+          <h3>EDIT: G.C.E. Ordinary Level Results</h3>
+          <span class="issuer">EDIT: Dept. of Examinations, Sri Lanka</span>
+          <a class="view" href="certificates/ol-results.pdf" target="_blank">View PDF &rarr;</a>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <img class="cert-thumb" src="certificates/course-cert.jpg" alt="Course Certificate" onerror="this.style.display='none'">
+        <div class="cert-body">
+          <h3>EDIT: Course / Training Certificate</h3>
+          <span class="issuer">EDIT: Issuing platform (e.g. Coursera)</span>
+          <a class="view" href="certificates/course-cert.pdf" target="_blank">View PDF &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= PROJECTS ================= -->
 <section id="projects">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="section-num">04 &mdash; Projects</span>
+      <span class="section-num">05 &mdash; Projects</span>
       <h2>Things I've built.</h2>
       <p>EDIT: Replace these four cards with your real self-projects and current real-world work — duplicate a card block for more.</p>
     </div>
@@ -453,7 +515,7 @@
 <section id="notes">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="section-num">05 &mdash; Notes</span>
+      <span class="section-num">06 &mdash; Notes</span>
       <h2>Ideas, worth keeping.</h2>
     </div>
 
